@@ -94,13 +94,18 @@ body {
   height: fit-content;
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
 }
 .initial-page .main-content .main-text {
-  font-size: 15rem;
+  font-size: 30vh;
   color: #fcfbfb; /* Solid black */
   mix-blend-mode: exclusion;
+  display: inline-block;
+  position: relative;
+  margin-top: 10rem;
 }
 .initial-page .secondary-content {
   display: flex;
@@ -145,6 +150,11 @@ body {
   width: 100%;
 }
 
+.intro {
+  height: 100%;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   html {
     font-size: 14px;
@@ -154,7 +164,6 @@ body {
   }
   .initial-page .main-content .main-text {
     font-size: 3rem;
-    flex-wrap: nowrap;
     display: flex;
   }
   .initial-page .secondary-content .social-icon .i {
