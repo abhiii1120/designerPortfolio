@@ -88,7 +88,7 @@ body {
   overflow: hidden;
   .navbar {
     @include sizes($height: fit-content);
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem;
     nav {
       display: flex;
       justify-content: space-between;
@@ -97,24 +97,26 @@ body {
   .main-content {
     @include sizes();
     display: flex;
-    justify-content: space-between;
+    justify-content: center; // center horizontally
+    align-items: flex-end;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
+    mix-blend-mode: exclusion;
+
     .main-text {
       font-size: 30vh;
       color: #fcfbfb; /* Solid black */
       mix-blend-mode: exclusion;
       display: inline-block;
       position: relative;
-      margin-top: 10rem;
     }
   }
   .secondary-content {
     display: flex;
     @include sizes();
     justify-content: space-between;
-    padding: 3rem 1.5rem;
+    padding: 1.5rem 1.5rem 3rem;
     .socials {
       display: flex;
       flex-direction: column;
@@ -140,6 +142,8 @@ body {
       align-items: flex-end;
       font-size: 4rem;
       letter-spacing: -4px;
+      color: #fcfbfb; /* Solid black */
+      mix-blend-mode: exclusion;
     }
   }
 
@@ -152,8 +156,8 @@ body {
   }
 }
 
-.intro{
-  @include sizes($height:100% );
+.intro {
+  @include sizes($height: 100%);
 }
 
 @media (max-width: 600px) {
@@ -164,7 +168,7 @@ body {
     background-position: center;
     .main-content {
       .main-text {
-        font-size: 3rem;
+        font-size: 20vh;
         display: flex;
       }
     }
@@ -185,7 +189,7 @@ body {
     }
     .navbar {
       .main-logo {
-        font-weight: 300;
+        font-weight: 400;
       }
       .sub-menu {
         display: none;

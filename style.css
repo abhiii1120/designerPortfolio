@@ -83,7 +83,7 @@ body {
   height: -moz-fit-content;
   height: fit-content;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem;
 }
 .initial-page .navbar nav {
   display: flex;
@@ -94,10 +94,12 @@ body {
   height: fit-content;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-end;
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  mix-blend-mode: exclusion;
 }
 .initial-page .main-content .main-text {
   font-size: 30vh;
@@ -105,7 +107,6 @@ body {
   mix-blend-mode: exclusion;
   display: inline-block;
   position: relative;
-  margin-top: 10rem;
 }
 .initial-page .secondary-content {
   display: flex;
@@ -113,7 +114,7 @@ body {
   height: fit-content;
   width: 100%;
   justify-content: space-between;
-  padding: 3rem 1.5rem;
+  padding: 1.5rem 1.5rem 3rem;
 }
 .initial-page .secondary-content .socials {
   display: flex;
@@ -140,6 +141,8 @@ body {
   align-items: flex-end;
   font-size: 4rem;
   letter-spacing: -4px;
+  color: #fcfbfb; /* Solid black */
+  mix-blend-mode: exclusion;
 }
 .initial-page img {
   position: absolute;
@@ -163,7 +166,7 @@ body {
     background-position: center;
   }
   .initial-page .main-content .main-text {
-    font-size: 3rem;
+    font-size: 20vh;
     display: flex;
   }
   .initial-page .secondary-content .social-icon .i {
@@ -177,7 +180,7 @@ body {
     font-size: 3rem;
   }
   .initial-page .navbar .main-logo {
-    font-weight: 300;
+    font-weight: 400;
   }
   .initial-page .navbar .sub-menu {
     display: none;

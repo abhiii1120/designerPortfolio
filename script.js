@@ -1,3 +1,22 @@
+let t1 = gsap.timeline();
+t1.from('.initial-page .desktop-image,.mobile-image',{
+  scale:2,
+  duration:1
+})
+.from('.initial-page .main-content',{
+ x: '100%',
+  duration: 0.5,
+  ease: 'power2.out'
+})
+.from('.hover-underline , .ri-menu-line , .social-icon , .web-designer , .art-container ',{
+  opacity:0,
+  duration:1,
+  delay:-0.5
+})
+
+
+
+
 function hoveredline() {
   let hoverUnderline = document.querySelectorAll(".hover-underline");
 
