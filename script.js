@@ -1,21 +1,34 @@
+
+const lenis = new Lenis({
+  duration: 1.5,
+  smoothWheel: true, // smooth mouse wheel
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+});
+
+// if you're using GSAP
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
+
 let t1 = gsap.timeline();
-t1.from('.initial-page .desktop-image,.mobile-image',{
-  scale:2,
-  duration:1
+t1.from(".initial-page .desktop-image,.mobile-image", {
+  scale: 2,
+  duration: 1,
 })
-.from('.initial-page .main-content',{
- x: '100%',
-  duration: 0.5,
-  ease: 'power2.out'
-})
-.from('.hover-underline , .ri-menu-line , .social-icon , .web-designer , .art-container ',{
-  opacity:0,
-  duration:1,
-  delay:-0.5
-})
-
-
-
+  .from(".initial-page .main-content", {
+    x: "100%",
+    duration: 0.5,
+    ease: "power2.out",
+  })
+  .from(
+    ".hover-underline , .ri-menu-line , .social-icon , .web-designer , .art-container ",
+    {
+      opacity: 0,
+      duration: 2.5,
+      delay: -0.5,
+    },
+  );
 
 function hoveredline() {
   let hoverUnderline = document.querySelectorAll(".hover-underline");
@@ -42,11 +55,8 @@ function hoveredline() {
 
 function rotatingLogo() {
   let socials = document.querySelectorAll(".social-icon");
-  console.log("hitting");
-  console.log(socials);
   socials.forEach((elem) => {
     elem.addEventListener("mouseenter", () => {
-      console.log(elem);
       gsap.to(elem.querySelector(".i"), {
         rotationY: 360,
         duration: 0.5,
@@ -68,22 +78,34 @@ const scrollAniamtion = gsap.to(".main-text", {
   duration: 50,
   ease: "none",
   repeat: -1,
- 
 });
 
-// gsap.to(scrollAniamtion,{
-//   timeScale:5,
-//   ease:"power2.inOut",
-//   scrollTrigger:{
-//     trigger:'.main-content',
-//    markers: true,
-//     scroller: "body",
-//     start: 'top 10%',
-//     end: 'bottom -100%',
-   
-//   }
-// })
+const t2 = gsap.timeline({
+  scrollTrigger:{
+    trigger:'.reveal-text-container',
+    start:'top 70%',
+    end:'bottomv 30%',
+    scrub:1,
+  }
+})
 
+const whiteText = new SplitType('.white-text',{types:'chars'});
+const whiteText2 = new SplitType('.white-text2',{types:'chars'});
+const orangeText = new SplitType('.orange-text',{types:'chars'});
+
+
+t2.fromTo(whiteText.chars,
+  { color: '#222' },
+  { color: '#ffffff', stagger: 0.75 }
+)
+.fromTo(orangeText.chars,
+  { color: '#222' },
+  { color: 'rgb(255, 60, 0)', stagger: 0.75 }
+)
+.fromTo(whiteText2.chars, 
+  { color: '#222' },
+  { color: '#ffffff', stagger: 0.75 }
+)
 
 rotatingLogo();
 hoveredline();
