@@ -44,9 +44,10 @@
   font-weight: 900;
 }
 :root {
-  --primary-text-color:#f05038;
-  --secondary-text-color:white;
-  --primary-background-color:#121111;
+  --primary-text-color: #f05038;
+  --secondary-text-color: white;
+  --ternery-text-color:#a7a0a0d1;
+  --primary-background-color: #121111;
 }
 
 * {
@@ -73,6 +74,42 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+}
+
+.button-container {
+  padding: 1.5rem 2.5rem;
+  border: 1px solid var(--ternery-text-color);
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: var(--ternery-text-color);
+  border-radius: 4rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.15rem;
+}
+.button-container .initial-text {
+  position: relative;
+}
+.button-container .below-text {
+  position: absolute;
+  bottom: -30px;
+  color: var(--primary-background-color);
+  z-index: 1;
+}
+.button-container .animated-color {
+  position: absolute;
+  bottom: 0;
+  transform: translate(0%, 50%);
+  border-radius: 50%;
+  background-color: #f05038;
+}
+.button-container:hover {
+  border: none;
 }
 
 .initial-page {
@@ -180,12 +217,35 @@ body {
 .intro .content .main-content {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4rem;
   max-width: 1200px;
 }
 .intro .content .main-content .upper-main-content {
-  font-size: 4rem;
+  font-size: 3.75rem;
   color: var(--secondary-text-color);
+  padding: 7.5rem 0 0;
+  font-weight: 800;
+}
+.intro .content .main-content .upper-main-content .white-text {
+  padding-left: 12rem;
+}
+.intro .content .main-content .secondary-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+.intro .content .main-content .secondary-container .main-data {
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+}
+.intro .content .main-content .secondary-container .main-data .secondary-text {
+  height: 100%;
+  max-width: 490px;
+  color: var(--ternery-text-color);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.1px;
 }
 
 @media (max-width: 600px) {
