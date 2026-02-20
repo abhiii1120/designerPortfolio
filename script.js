@@ -1,10 +1,9 @@
 const lenis = new Lenis({
   duration: 1.5,
-  smoothWheel: true, // smooth mouse wheel
+  smoothWheel: true,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 });
 
-// if you're using GSAP
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
 });
@@ -83,7 +82,7 @@ const t2 = gsap.timeline({
   scrollTrigger: {
     trigger: ".reveal-text-container",
     start: "top 70%",
-    end: "bottomv 30%",
+    end: "bottom 30%",
     scrub: 1,
   },
 });
@@ -118,52 +117,92 @@ t2.fromTo(
     { color: "#222" },
     { color: "#ffffff", stagger: 1.25 },
   )
-  .from(
-    '.secondary-text, .button-container',{
-      opacity:0,
-      duration:1,
-      ease:'slow(0.7,0.7,false)'
-    }
-  )
+  .from(".secondary-text, .button-container", {
+    opacity: 0,
+    duration: 1,
+    ease: "slow(0.7,0.7,false)",
+  });
 
-  function animatedButton(){
-    const button = document.querySelectorAll('.button-container');
-    button.forEach(elem =>{
-      elem.addEventListener('mouseenter',()=>{
-        gsap.to(elem.querySelector('.initial-text'),{
-          top:'-50px',
-          position:'absolute',
-          duration:0.25
-        })
-        gsap.to(elem.querySelector('.below-text'),{
-          bottom:0,
-          position:'relative',
-          duration:0.25
-        })
-         gsap.to(elem.querySelector('.animated-color'),{
-          height:'400%',
-          width:'150%',
-        })
-      })
-      elem.addEventListener('mouseleave',()=>{
-        gsap.to(elem.querySelector('.initial-text'),{
-          top:'0px',
-          position:'relative',
-          duration:0.25
-        })
-       gsap.to(elem.querySelector('.below-text'),{
-          bottom:'-50px',
-          position:'absolute',
-          duration:0.25
-        })
-           gsap.to(elem.querySelector('.animated-color'),{
-          height:'0%',
-          width:'0%',
-        })
-      })
-    })
-  }
+function animatedButton() {
+  const button = document.querySelectorAll(".button-container");
+  button.forEach((elem) => {
+    elem.addEventListener("mouseenter", () => {
+      gsap.to(elem.querySelector(".initial-text"), {
+        top: "-50px",
+        position: "absolute",
+        duration: 0.25,
+      });
+      gsap.to(elem.querySelector(".below-text"), {
+        bottom: 0,
+        position: "relative",
+        duration: 0.25,
+      });
+      gsap.to(elem.querySelector(".animated-color"), {
+        height: "400%",
+        width: "150%",
+      });
+    });
+    elem.addEventListener("mouseleave", () => {
+      gsap.to(elem.querySelector(".initial-text"), {
+        top: "0px",
+        position: "relative",
+        duration: 0.25,
+      });
+      gsap.to(elem.querySelector(".below-text"), {
+        bottom: "-50px",
+        position: "absolute",
+        duration: 0.25,
+      });
+      gsap.to(elem.querySelector(".animated-color"), {
+        height: "0%",
+        width: "0%",
+      });
+    });
+  });
+}
 
-  rotatingLogo();
-  hoveredline();
-  animatedButton();
+function animatedProjectsSection() {
+  const projects = document.querySelectorAll(".project");
+  projects.forEach((project, i) => {
+    gsap.to(project, {
+      scrollTrigger: {
+        trigger: project,
+        start: "top top", // card hits top of viewport
+        end: "bottom top", // card leaves viewport
+        pin: true, // pin it in place
+        pinSpacing: false, // don't add extra space
+        scrub: true,
+      },
+      scale: 0.9 - i * 0.02, // each card scales down slightly more
+      // transformOrigin: "top center",
+      opacity: 0, // smooth tie to scroll
+    });
+  });
+}
+
+function mouseFollower() {
+  const projects = document.querySelector(".projects");
+  projects.addEventListener("mousemove", (dets) => {
+    console.log(dets);
+    gsap.to(".mouse-folowing-color-text", {
+      x: dets.clientX - 20, // center it
+      y: dets.clientY - 40, // center it
+      duration: 0.25,
+      ease: "power2.out",
+      opacity: 1,
+      height: "80px",
+      width: "80px",
+    });
+  });
+  projects.addEventListener("mouseleave", () => {
+    gsap.to(".mouse-folowing-color-text", {
+      opacity: 0,
+      duration: 0.3,
+    });
+  });
+}
+rotatingLogo();
+hoveredline();
+animatedButton();
+animatedProjectsSection();
+mouseFollower();
