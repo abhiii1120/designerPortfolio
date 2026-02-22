@@ -3,6 +3,8 @@ const lenis = new Lenis({
   smoothWheel: true,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 });
+const mm = gsap.matchMedia();
+
 
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
@@ -102,27 +104,29 @@ const orangeText = new SplitType(".orange-text", {
 
 gsap.set(".char", { display: "inline" }); // this is the magic line
 
-t2.fromTo(
-  whiteText.chars,
-  { color: "#222" },
-  { color: "#ffffff", stagger: 1.25 },
-)
-  .fromTo(
-    orangeText.chars,
-    { color: "#222" },
-    { color: "#f05038", stagger: 1.25 },
-  )
-  .fromTo(
-    whiteText2.chars,
-    { color: "#222" },
-    { color: "#ffffff", stagger: 1.25 },
-  )
-  .from(".secondary-text, .button-container", {
-    opacity: 0,
-    duration: 1,
-    ease: "slow(0.7,0.7,false)",
-  });
-
+function buildTimeline() {
+  t2.fromTo(
+      whiteText.chars,
+      { color: "#222" },
+      { color: "#ffffff", stagger: 1.25, duration: 1 }
+    )
+    .fromTo(
+      orangeText.chars,
+      { color: "#222" },
+      { color: "#f05038", stagger: 1.25, duration: 1 },
+      
+    )
+    .fromTo(
+      whiteText2.chars,
+      { color: "#222" },
+      { color: "#ffffff", stagger: 1.25, duration: 1 },
+    )
+    .from(".secondary-text, .button-container", {
+      opacity: 0,
+      duration: 1,
+      ease: "slow(0.7,0.7,false)",
+    }, "<-=1");
+}
 function animatedButton() {
   const button = document.querySelectorAll(".button-container");
   button.forEach((elem) => {
@@ -163,7 +167,7 @@ function animatedButton() {
 
 function animatedProjectsSection() {
   const projects = document.querySelectorAll(".project");
-  projects.forEach((project, i) => {
+  projects.forEach((project) => {
     gsap.to(project, {
       scrollTrigger: {
         trigger: project,
@@ -172,11 +176,15 @@ function animatedProjectsSection() {
         pin: true, // pin it in place
         pinSpacing: false, // don't add extra space
         scrub: true,
+        invalidateOnRefresh: true,
       },
-      scale: 0.9 - i * 0.02, // each card scales down slightly more
-      // transformOrigin: "top center",
-      opacity: 0, // smooth tie to scroll
+      scale: 0.7,
+      opacity: 0, 
     });
+  });
+ window.addEventListener("resize", () => {
+    ScrollTrigger.invalidate(); // clears cached values
+    ScrollTrigger.refresh();    // recalculates everything fresh
   });
 }
 
@@ -206,3 +214,4 @@ hoveredline();
 animatedButton();
 animatedProjectsSection();
 mouseFollower();
+buildTimeline();
