@@ -82,6 +82,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .line-div {
@@ -124,6 +128,26 @@ body {
   }
 }
 
+.navbar {
+  @include sizes($height: fit-content);
+  padding: 1.5rem 1.5rem;
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.page-transition {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  @include sizes(100%);
+  background: var(--primary-text-color);
+  transform: translateY(0%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
 .initial-page {
   display: flex;
   flex-direction: column;
@@ -135,14 +159,7 @@ body {
   justify-content: space-between;
   // padding: 1.5rem 1.5rem 3rem;
   overflow: hidden;
-  .navbar {
-    @include sizes($height: fit-content);
-    padding: 1.5rem 1.5rem;
-    nav {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+
   .main-content {
     @include sizes();
     display: flex;
@@ -365,7 +382,7 @@ body {
         max-width: 1000px;
         .revealing-text {
           position: relative;
-          font-size: 4rem;
+          font-size: 4.5rem;
           .number {
             position: absolute;
             top: 10px;
@@ -405,7 +422,7 @@ body {
             height: 65px;
             object-fit: cover;
           }
-          &:active {
+          &.active {
             border-color: var(--primary-text-color);
           }
         }
@@ -495,9 +512,80 @@ body {
   }
 }
 
+.about-page {
+  @include sizes();
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-background-color);
+  justify-content: space-between;
+  align-items: center;
+  .hover-underline {
+    a {
+      color: var(--secondary-text-color);
+    }
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding: 6rem;
+    max-width: 80vw;
+    align-items: center;
+    justify-content: center;
+    .about-us-info {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--secondary-text-color);
+      span{
+        padding-left: 10rem;
+      }
+      img {
+        height: 96px;
+        width: 64px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    }
+    .sub-about-us-container {
+      display: flex;
+      gap: 2rem;
+      .first-container {
+        flex: 1;
+        color: var(--ternery-text-color);
+        font-weight: 400;
+        font-size: 1.1rem;
+      }
+      .second-container {
+        flex: 1;
+        color: var(--ternery-text-color);
+        font-weight: 400;
+        font-size: 1.1rem;
+      }
+      .third-container {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   html {
     font-size: 14px;
+  }
+  .navbar {
+    .main-logo {
+      font-weight: 400;
+    }
+    .sub-menu {
+      display: none;
+    }
+    i {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
   }
   .initial-page {
     background-position: center;
@@ -521,19 +609,7 @@ body {
         font-size: 3rem;
       }
     }
-    .navbar {
-      .main-logo {
-        font-weight: 400;
-      }
-      .sub-menu {
-        display: none;
-      }
-      i {
-        display: block;
-        font-size: 1.5rem;
-        font-weight: 400;
-      }
-    }
+
     .secondary-content {
       flex-direction: row-reverse;
     }
@@ -641,21 +717,21 @@ body {
       flex-direction: column-reverse;
       padding: 1rem;
       gap: 1rem;
-      .socials{
+      .socials {
         flex-direction: row;
         justify-content: space-between;
         mix-blend-mode: exclusion;
-              color: #fcfbfb;
-      .social-icon {
-        .i {
-          font-size: 1.75rem;
-        }
-        .text {
-          font-size: 1.25rem;
+        color: #fcfbfb;
+        .social-icon {
+          .i {
+            font-size: 1.75rem;
+          }
+          .text {
+            font-size: 1.25rem;
+          }
         }
       }
-    }
-      .contacts-container{
+      .contacts-container {
         align-items: flex-start;
       }
     }
@@ -672,10 +748,30 @@ body {
         font-weight: 400;
       }
     }
-  
-    .mobile-image{
-      object-position: 31.7% 47.9%;
 
+    .mobile-image {
+      object-position: 31.7% 47.9%;
+    }
+  }
+  .about-page {
+    .main-content {
+      padding:4rem 1rem;
+      max-width: 100%;
+      .about-us-info {
+        font-size: 1.75rem;
+      }
+      .sub-about-us-container {
+        flex-direction: column;
+        .first-container {
+          font-size: 1rem;
+        }
+        .second-container{
+          font-size: 1rem;
+        }
+        .third-container{
+          justify-content: flex-end;
+        }
+      }
     }
   }
 }

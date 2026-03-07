@@ -187,7 +187,6 @@ function animatedProjectsSection() {
     });
   });
   window.addEventListener("resize", () => {
-    // ScrollTrigger.invalidate(); // clears cached values
     ScrollTrigger.refresh(); // recalculates everything fresh
   });
 }
@@ -339,14 +338,15 @@ const testimonials = [
     name: "//Maya Lopez",
     designation: "CEO, fundwizz",
   },
-   {
+  {
     number: "02",
-    whiteText: '"His strong problem-solving skills and dedication to excellence consistently elevated our projects,',
+    whiteText:
+      '"His strong problem-solving skills and dedication to excellence consistently elevated our projects,',
     orangeText: ` making a lasting impact on the team."`,
     name: "//George Jones",
     designation: "Product Manager, Gliss",
   },
-   {
+  {
     number: "03",
     whiteText: '"With a unique blend of creativity and precision,',
     orangeText: ` he brought fresh perspectives that drove meaningful results."`,
@@ -355,31 +355,59 @@ const testimonials = [
   },
 ];
 
-function onClickTestimonial(){
-  const imageCards = $$('.image-1');
-  const number = $('.orange-number');
-  const testimonialWhiteText = $('.testimonials-white-text');
-  const testimonialOrangeText = $('.testimonials-orange-text');
-  const nameContainer = $('.name-container');
+function onClickTestimonial() {
+  const imageCards = $$(".image-1");
+  const number = $(".orange-number");
+  const testimonialWhiteText = $(".testimonials-white-text");
+  const testimonialOrangeText = $(".testimonials-orange-text");
+  const nameContainer = $(".name-container");
 
-  imageCards.forEach((card)=>{
-    card.addEventListener("click",()=>{
-      imageCards.forEach(c => c.classList.remove("active"));
+  imageCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      imageCards.forEach((c) => c.classList.remove("active"));
       card.classList.add("active");
       const index = card.dataset.index;
       const data = testimonials[index];
 
       number.innerHTML = data.number;
       testimonialWhiteText.innerText = data.whiteText;
-      testimonialOrangeText.innerHTML = data.orangeText
-      testimonialOrangeText.style.color = '#f05038'
-      testimonialWhiteText.style.color = '#fff'
-      nameContainer.innerHTML =` ${data.name}  <span class="designation">${data.designation}</span>`
-      revealTestimonials()
-    })
-  })
+      testimonialOrangeText.innerHTML = data.orangeText;
+      testimonialOrangeText.style.color = "#f05038";
+      testimonialWhiteText.style.color = "#fff";
+      nameContainer.innerHTML = ` ${data.name}  <span class="designation">${data.designation}</span>`;
+      revealTestimonials();
+    });
+  });
 }
 
+const overlay = $('.page-transition');
+const links = $$('a');
+
+window.addEventListener('DOMContentLoaded',()=>{
+  gsap.set(overlay,{yPercent:0});
+  gsap.to(overlay,{
+    yPercent:-100,
+    duration:1,
+    ease:'power3.inOut',
+  })
+})
+
+links.forEach((link)=>{
+  link.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const href = link.getAttribute("href");
+
+    gsap.set(overlay,{yPercent:100});
+    gsap.to(overlay,{
+      yPercent:0,
+      duration:1,
+      ease:'power3.inOut',
+      onComplete:()=>{
+        window.location.href =href;
+      }
+    })
+  })
+})
 
 rotatingLogo();
 hoveredline();

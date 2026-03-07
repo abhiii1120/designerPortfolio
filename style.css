@@ -78,6 +78,10 @@ body {
   flex-direction: column;
   gap: 0.15rem;
 }
+.hover-underline a {
+  text-decoration: none;
+  color: black;
+}
 
 .line-div {
   width: 100%;
@@ -121,6 +125,29 @@ body {
   border-color: #f05038;
 }
 
+.navbar {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  padding: 1.5rem 1.5rem;
+}
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-transition {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--primary-text-color);
+  transform: translateY(0%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
 .initial-page {
   display: flex;
   flex-direction: column;
@@ -130,16 +157,6 @@ body {
   background-size: cover;
   justify-content: space-between;
   overflow: hidden;
-}
-.initial-page .navbar {
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  padding: 1.5rem 1.5rem;
-}
-.initial-page .navbar nav {
-  display: flex;
-  justify-content: space-between;
 }
 .initial-page .main-content {
   height: -moz-fit-content;
@@ -381,7 +398,7 @@ body {
 }
 .testimonials .testimonials-container .testimonial .left-container .revealing-text {
   position: relative;
-  font-size: 4rem;
+  font-size: 4.5rem;
 }
 .testimonials .testimonials-container .testimonial .left-container .revealing-text .number {
   position: absolute;
@@ -423,7 +440,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.testimonials .testimonials-container .testimonial .right-container .image-1:active {
+.testimonials .testimonials-container .testimonial .right-container .image-1.active {
   border-color: var(--primary-text-color);
 }
 
@@ -513,9 +530,79 @@ body {
   width: 100%;
 }
 
+.about-page {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-background-color);
+  justify-content: space-between;
+  align-items: center;
+}
+.about-page .hover-underline a {
+  color: var(--secondary-text-color);
+}
+.about-page .main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 6rem;
+  max-width: 80vw;
+  align-items: center;
+  justify-content: center;
+}
+.about-page .main-content .about-us-info {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--secondary-text-color);
+}
+.about-page .main-content .about-us-info span {
+  padding-left: 10rem;
+}
+.about-page .main-content .about-us-info img {
+  height: 96px;
+  width: 64px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+}
+.about-page .main-content .sub-about-us-container {
+  display: flex;
+  gap: 2rem;
+}
+.about-page .main-content .sub-about-us-container .first-container {
+  flex: 1;
+  color: var(--ternery-text-color);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.about-page .main-content .sub-about-us-container .second-container {
+  flex: 1;
+  color: var(--ternery-text-color);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.about-page .main-content .sub-about-us-container .third-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media (max-width: 1024px) {
   html {
     font-size: 14px;
+  }
+  .navbar .main-logo {
+    font-weight: 400;
+  }
+  .navbar .sub-menu {
+    display: none;
+  }
+  .navbar i {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 400;
   }
   .initial-page {
     background-position: center;
@@ -533,17 +620,6 @@ body {
   .initial-page .secondary-content .web-designer-container {
     align-items: flex-start;
     font-size: 3rem;
-  }
-  .initial-page .navbar .main-logo {
-    font-weight: 400;
-  }
-  .initial-page .navbar .sub-menu {
-    display: none;
-  }
-  .initial-page .navbar i {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 400;
   }
   .initial-page .secondary-content {
     flex-direction: row-reverse;
@@ -666,6 +742,25 @@ body {
   .footer .mobile-image {
     -o-object-position: 31.7% 47.9%;
        object-position: 31.7% 47.9%;
+  }
+  .about-page .main-content {
+    padding: 4rem 1rem;
+    max-width: 100%;
+  }
+  .about-page .main-content .about-us-info {
+    font-size: 1.75rem;
+  }
+  .about-page .main-content .sub-about-us-container {
+    flex-direction: column;
+  }
+  .about-page .main-content .sub-about-us-container .first-container {
+    font-size: 1rem;
+  }
+  .about-page .main-content .sub-about-us-container .second-container {
+    font-size: 1rem;
+  }
+  .about-page .main-content .sub-about-us-container .third-container {
+    justify-content: flex-end;
   }
 }
 @media (min-width: 1024px) {
