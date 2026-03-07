@@ -589,6 +589,82 @@ body {
   justify-content: flex-end;
 }
 
+.second-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+  background-color: rgba(8, 8, 8, 0.4941176471);
+  justify-content: center;
+  align-items: center;
+}
+.second-page .main-content {
+  font-size: 4rem;
+  max-width: 800px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+}
+.second-page img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  z-index: -1;
+}
+
+.timelines {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-background-color);
+  border-top: 1px solid var(--line-color);
+  gap: 3.5rem;
+  border-bottom: 1px solid var(--line-color);
+  padding: 0 0 3rem 0rem;
+}
+.timelines .title {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: var(--primary-text-color);
+}
+.timelines .timeline-container .timeline {
+  display: flex;
+  font-size: 1.25rem;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--line-color);
+  color: var(--ternery-text-color);
+  position: relative;
+  align-items: center;
+  gap: 2rem;
+}
+.timelines .timeline-container .timeline div {
+  flex: 1;
+  background-color: transparent;
+  z-index: 1;
+}
+.timelines .timeline-container .timeline .first-text {
+  color: var(--secondary-text-color);
+}
+.timelines .timeline-container .timeline .fourth-text {
+  flex: 0 0 80px;
+  text-align: end;
+}
+.timelines .timeline-container .timeline .orange-bg {
+  position: absolute;
+  width: 100%;
+  background-color: var(--primary-text-color);
+  left: 0;
+  z-index: 0;
+}
+
 @media (max-width: 1024px) {
   html {
     font-size: 14px;
@@ -761,6 +837,15 @@ body {
   }
   .about-page .main-content .sub-about-us-container .third-container {
     justify-content: flex-end;
+  }
+  .timelines .timeline-container .timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+  .timelines .timeline-container .timeline .fourth-text {
+    flex: 0;
   }
 }
 @media (min-width: 1024px) {

@@ -387,7 +387,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   gsap.set(overlay,{yPercent:0});
   gsap.to(overlay,{
     yPercent:-100,
-    duration:1,
+    duration:0.75,
     ease:'power3.inOut',
   })
 })
@@ -400,7 +400,7 @@ links.forEach((link)=>{
     gsap.set(overlay,{yPercent:100});
     gsap.to(overlay,{
       yPercent:0,
-      duration:1,
+      duration:0.75,
       ease:'power3.inOut',
       onComplete:()=>{
         window.location.href =href;
