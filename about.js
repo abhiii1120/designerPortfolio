@@ -150,7 +150,7 @@ const experience = [
     location: "Remote",
   },
   {
-    name: "Pilai University",
+    name: "Pillai University",
     post: "Student",
     duration: "June 2022 - March 2025",
     location: "Panvel",

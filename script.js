@@ -222,6 +222,7 @@ const projectArray = [
     firstPreset: "landing Page",
     secondPreset: "Mobile App",
     thirdPreset: "Redesign",
+    src:'formula-vintage'
   },
   {
     year: 2024,
@@ -236,6 +237,7 @@ const projectArray = [
     img: "https://framerusercontent.com/images/BUMWJfM7FAxHoEYXhMjW881wM.png",
     firstPreset: "Website Design",
     secondPreset: "Branding",
+    src:'sprey-zest'
   },
   {
     year: 2020,
@@ -250,6 +252,7 @@ const projectArray = [
     img: "https://framerusercontent.com/images/VQY4WQ8E6fx261RhsoqM17bkt9E.png",
     firstPreset: "Desktop App",
     secondPreset: "Mobile App",
+    src:'super-pro'
   },
   {
     year: 2024,
@@ -265,13 +268,14 @@ const projectArray = [
     firstPreset: "Mobile App",
     secondPreset: "Branding",
     thirdPreset: "Website Design",
+    src:'architech-buildings'
   },
 ];
 const projectContainer = $(".project-container");
 
 function injectProjects() {
   projectContainer.innerHTML = projectArray.map((item) => {
-    return `   <div class="project">
+    return `   <div class="project" onclick="openProject('${item.src}')">
         <div class="project-image">
           <img
             src="${item.img}"
@@ -380,34 +384,99 @@ function onClickTestimonial() {
   });
 }
 
-const overlay = $('.page-transition');
-const links = $$('a');
+const overlay = $(".page-transition");
+const links = $$("a");
 
-window.addEventListener('DOMContentLoaded',()=>{
-  gsap.set(overlay,{yPercent:0});
-  gsap.to(overlay,{
-    yPercent:-100,
-    duration:0.75,
-    ease:'power3.inOut',
-  })
-})
+window.addEventListener("DOMContentLoaded", () => {
+  gsap.set(overlay, { yPercent: 0 });
+  gsap.to(overlay, {
+    yPercent: -100,
+    duration: 0.75,
+    ease: "power3.inOut",
+  });
+});
 
-links.forEach((link)=>{
-  link.addEventListener('click',(e)=>{
+links.forEach((link) => {
+  link.addEventListener("click", (e) => {
     e.preventDefault();
     const href = link.getAttribute("href");
 
-    gsap.set(overlay,{yPercent:100});
-    gsap.to(overlay,{
-      yPercent:0,
-      duration:0.75,
-      ease:'power3.inOut',
-      onComplete:()=>{
-        window.location.href =href;
-      }
-    })
-  })
-})
+    gsap.set(overlay, { yPercent: 100 });
+    gsap.to(overlay, {
+      yPercent: 0,
+      duration: 0.75,
+      ease: "power3.inOut",
+      onComplete: () => {
+        window.location.href = href;
+      },
+    });
+  });
+});
+
+const projectsArrayLocal = [
+  {
+    heading: "formula-vintage",
+    titlefirstWord: "Formula",
+    titleSecondWord: "Vintage",
+    overview: `For Formula Vintage, we crafted a design that honors the rich heritage of classic cars while adding a modern twist.
+     Combining timeless elegance with sleek, contemporary elements, we created an experience that appeals to both enthusiasts and newcomers,
+      celebrating the past with a fresh perspective.`,
+      backgroundImage:'https://framerusercontent.com/images/La32y794CcZboMk8PScVdQ2O5Rk.png',
+      firstImage:'https://framerusercontent.com/images/dpH59tOrpjh2BbTx4bRKGTL4K3k.jpeg',
+      secondImage:'https://framerusercontent.com/images/FnQEH6GWRIWArah0ZLeqmHEFg.jpeg',
+      thirdImage:'https://framerusercontent.com/images/iBbyMINjy5PJdzFxli5XyQJsh8.jpeg',
+      fourthImage:'https://framerusercontent.com/images/ZpMJgVUV6z3STjkTpTEcO6gb7o.jpeg',
+  },
+    {
+    heading: "sprey-zest",
+    titlefirstWord: "Sprey",
+    titleSecondWord: "Zest",
+    overview: `For Sprey Zest, we took a playful, bold approach to packaging and branding. Instead of following the typical fresh or clean
+     aesthetic, we infused energy and personality into every detail, making the product stand out on shelves and bringing a burst
+      of excitement to the consumer experience.`,
+      backgroundImage:'https://framerusercontent.com/images/OS1vfDT4H5nB1zNJVbXEOlUPi7Q.png',
+      firstImage:'https://framerusercontent.com/images/PbYUosRgJqZLyjgxHzFEkfpoWG4.png',
+      secondImage:'https://framerusercontent.com/images/og6oJurln4A0kIuKHsNduPbJ52w.png',
+  },
+    {
+    heading: "super-pro",
+    titlefirstWord: "Super",
+    titleSecondWord: "Pro",
+    overview: `For Super-Pro, we redefined what it means to be a professional by focusing on the mindset and determination behind success,
+     not just the achievements. The design highlighted the drive and passion of athletes, creating a bold, empowering experience that
+      resonated with anyone striving for excellence.`,
+      backgroundImage:'https://framerusercontent.com/images/QkbMtMzh5ogYUcujuw1cyGf9358.jpeg',
+      firstImage:'https://framerusercontent.com/images/TgCOD1g4P6yw0xSQEZhIozwxFM.png',
+      secondImage:'https://framerusercontent.com/images/slcspMR1NaIfoLkOL2v9QNOYx1A.jpeg',
+      thirdImage:'https://framerusercontent.com/images/x5zSUyqafLvFikejlgiNcBkzPY.jpeg',
+  },
+    {
+    heading: "architech-buildings",
+    titlefirstWord: "Architech",
+    titleSecondWord: "Buildings",
+    overview: `We redefined the concept of modern living by creating a design that challenges conventional boundaries. 
+    Focusing on comfort, functionality, and unexpected elements, we transformed the ordinary into something extraordinary,
+     making everyday experiences feel fresh and unique.`,
+      backgroundImage:'https://framerusercontent.com/images/Z1w2O7B5xsN3Y7XkKgBi9kFOgps.jpg',
+      firstImage:'https://framerusercontent.com/images/ljM8eWcOhVhTvZlGc4tCDt64.jpg',
+      secondImage:'https://framerusercontent.com/images/qABwqIx0xbg95cqrqAiOHmoqwE.jpg',
+      thirdImage:'https://framerusercontent.com/images/BFvN8RfAXGmenGL1h9PCWyfFH8.jpg',
+      fourthImage:'https://framerusercontent.com/images/7WfroAh6YAklX3g1ndBbqQiPU.jpg',
+  },
+];
+
+function openProject(name) {
+  localStorage.setItem("projects", JSON.stringify(projectsArrayLocal));
+  gsap.set(overlay, { yPercent: 100 });
+  gsap.to(overlay, {
+    yPercent: 0,
+    duration: 0.75,
+    ease: "power3.inOut",
+    onComplete: () => {
+      window.location.href = `projects.html?name=${encodeURIComponent(name)}`;
+    },
+  });
+}
 
 rotatingLogo();
 hoveredline();

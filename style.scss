@@ -747,6 +747,83 @@ body {
   }
 }
 
+.project-main-page {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  @include sizes(fit-content);
+  overflow: auto;
+  .bg-image {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    img{
+      z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    }
+  }
+  .dark-overlay {
+    height: 150vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    .overlay-content {
+      display: flex;
+      padding: 5rem;
+      justify-content: center;
+      width: 100%;
+      gap: 16rem;
+      .main-text {
+        color: var(--secondary-text-color);
+        display: flex;
+        flex-direction: column;
+        font-size: 6.5rem;
+        line-height: 1;
+        letter-spacing: -2px;
+      }
+      .sub-text-container {
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        .title {
+          font-size: 1.25rem;
+          color: var(--primary-text-color);
+        }
+        .sub-text {
+          color: var(--ternery-text-color);
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
+
+.project-images {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .project-img-wrap {
+  width: 100%;
+  height: 600px;    
+  overflow: hidden;  
+
+  img {
+    width: 100%;
+    height: 110%;   
+    object-fit: cover;
+    display: block;
+  }
+}
+}
+
 @media (max-width: 1024px) {
   html {
     font-size: 14px;
