@@ -1077,6 +1077,20 @@ body {
     gap: 0.5rem;
     align-items: center;
   }
+  .project-main-page .dark-overlay .overlay-content {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .project-main-page .dark-overlay .overlay-content .main-text {
+    font-size: 4rem;
+  }
+  .project-main-page .dark-overlay .overlay-content .sub-text-container {
+    max-width: 100%;
+  }
+  .project-main-page .dark-overlay .overlay-content .sub-text-container .sub-text {
+    font-size: 2rem;
+  }
 }
 @media (min-width: 1024px) {
   .initial-page .mobile-image {
